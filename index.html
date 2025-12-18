@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JW Auto Car — Oficina Mecânica</title>
+    <meta name="description" content="Oficina mecânica profissional — solicite orçamento e atendimento especializado.">
+    <link rel="stylesheet" href="./Css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="./img/logo-ef6f07e2-e056-4f7d-99b6-47d4411986c0 (1).png" alt="JW Auto Car">
+            </div>
+            <div class="header-info">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <!-- Clock icon -->
+                        <svg class="icon icon-clock" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 7v6l4 2" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="1.5"></circle>
+                        </svg>
+                        <div class="hours">Seg-Sex: 08:00 - 18:00</div>
+                    </div>
+
+                    <a class="contact-item phone" href="tel:+551199999999" aria-label="Ligar agora">
+                        <!-- Smartphone icon -->
+                        <svg class="icon icon-smartphone" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="7" y="2" width="10" height="20" rx="2" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></rect>
+                            <circle cx="12" cy="18" r="0.8" fill="#fff"></circle>
+                        </svg>
+                        <span>(11) 93301-1723</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Cuidamos do seu carro como você merece</h1>
+                    <p class="lead">Atendimento profissional, transparência e garantia em todos os serviços — rapidez e confiança para você sair seguro.</p>
+
+                    <ul class="diferenciais">
+                        <li>Equipe especializada</li>
+                        <li>Peças de qualidade</li>
+                        <li>Atendimento com garantia</li>
+                    </ul>
+                </div>
+
+                <aside class="hero-form">
+                    <form id="contactForm">
+                        <h3>Solicitar orçamento</h3>
+                        <div class="row">
+                            <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                            <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
+                        </div>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
+                        <textarea name="mensagem" id="mensagem" placeholder="Mensagem (opcional)"></textarea>
+                        <button type="submit" class="btn-cta">Solicitar orçamento</button>
+                        <p class="form-note">Receberemos sua solicitação e entraremos em contato em até 24h.</p>
+                    </form>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Prova social -->
+        <section class="prova-social">
+            <div class="container stats">
+                <div class="stat">24/7<br><span>Equipe Qualificada</span></div>
+                <div class="stat">+20.000<br><span>Clientes Satisfeitos</span></div>
+                <div class="stat">15<br><span>Anos de Experiência</span></div>
+            </div>
+        </section>
+
+        <!-- Proposta de Valor -->
+        <section class="valor">
+            <div class="container valor-grid">
+                <div class="valor-text">
+                    <h2>Por que escolher nossa oficina?</h2>
+                    <p>Oferecemos transparência, qualidade técnica e garantia nos serviços. Cada atendimento é pensado para devolver segurança e desempenho ao seu veículo.</p>
+                    <ul>
+                        <li>Qualidade</li>
+                        <li>Garantia de serviço</li>
+                        <li>Atendimento especializado</li>
+                    </ul>
+                </div>
+                <div class="valor-image">
+                    <img src="data:image/jpeg;base64,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" alt="Carro premium">
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section class="servicos">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <div class="cards">
+                    <article class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKZhm0KluHy8mLQ1IDUmP37bnyQZyGsTF1XQ&s" alt="Mecânica Geral">
+                        <h3>Mecânica Geral</h3>
+                        <p>Reparos completos e manutenção preventiva para garantir segurança e performance.</p>
+                    </article>
+                    <article class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVoX8O-9PZZz_N01Pg56NPnFkt_IxL5dshsQ&s" alt="Troca de Óleo">
+                        <h3>Troca de Óleo</h3>
+                        <p>Óleos e filtros de primeira linha para preservação do motor.</p>
+                    </article>
+                    <article class="card">
+                        <img src="https://cpfabbri.com.br/wp-content/uploads/2022/05/freio-do-carro.jpg" alt="Freios">
+                        <h3>Freios</h3>
+                        <p>Inspeção e substituição com garantia de segurança.</p>
+                    </article>
+                    <article class="card">
+                        <img src="https://www.grupoab.com.br/cache/sistema%20de%20suspens%C3%A3o%20do%20seu%20carro_f0d7df57715277acdacaba01441c95ff.png" alt="Suspensão">
+                        <h3>Suspensão</h3>
+                        <p>Reparo e regulagem para conforto e estabilidade na direção.</p>
+                    </article>
+                    <article class="card">
+                        <img src="https://monobloco.net.br/wp-content/uploads/2024/03/desvendando-os-misterios-o-diagnostico-eletronico-nos-automoveis-modernos.jpg" alt="Diagnóstico Eletrônico">
+                        <h3>Diagnóstico Eletrônico</h3>
+                        <p>Leitura de falhas com equipamentos modernos e solução especializada.</p>
+                    </article>
+                    <article class="card">
+                        <img src="https://site.zuldigital.com.br/blog/wp-content/uploads/2020/06/Alinhamento_Blog_02-1_Easy-Resize.com_.jpg" alt="Alinhamento">
+                        <h3>Alinhamento e Balanceamento</h3>
+                        <p>Serviço preciso para melhor dirigibilidade e maior vida útil dos pneus.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa - nos encontre aqui -->
+        <section class="map-section">
+            <div class="container">
+                <h2>Nos encontre aqui!</h2>
+                <p class="address">Rua Tufi Matta, 619</p>
+                <div class="map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps?q=Rua%20Tufi%20Matta%20619&amp;hl=pt-BR&amp;z=16&amp;output=embed"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="depoimentos">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="testimonials">
+                    <blockquote class="testimonial">
+                        <img src="https://i.pravatar.cc/80?img=8" alt="Cliente">
+                        <p>Excelente atendimento e preço justo. Recomendo muito!</p>
+                        <cite>— Carlos M.</cite>
+                    </blockquote>
+                    <blockquote class="testimonial">
+                        <img src="https://i.pravatar.cc/80?img=12" alt="Cliente">
+                        <p>Profissionais competentes e rápidos. Meu carro voltou como novo.</p>
+                        <cite>— Marina S.</cite>
+                    </blockquote>
+                    <blockquote class="testimonial">
+                        <img src="https://i.pravatar.cc/80?img=12" alt="Cliente">
+                        <p>Profissionais competentes e rápidos. Meu carro voltou como novo.</p>
+                        <cite>— Marina S.</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container cta-inner">
+                <div class="cta-text">
+                    <h2>Agende agora seu atendimento</h2>
+                    <p>Garanta uma avaliação profissional e orçamento sem compromisso.</p>
+                </div>
+                <a class="btn-cta large" href="#contactForm">Agendar atendimento</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Contato</h4>
+                <p>Rua Tufi Mattar, 619 - Americanópolis, SP</p>
+                <p>Telefone: <a href="tel:+551199999999">(11) 93301-1723</a></p>
+                <p>Telefone: <a href="tel:+551199999999">(11) 93301-1723</a></p>
+            </div>
+            <div>
+                <h4>Redes</h4>
+                <p><a href="#">Facebook</a> • <a href="#">Instagram</a></p>
+            </div>
+            <div class="copyright">© 2025 JW Auto Car. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+    <script src="./Js/main.js"></script>
+</body>
+</html>
