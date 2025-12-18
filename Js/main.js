@@ -1,23 +1,37 @@
-// main.js - validação simples do formulário e integração de exemplo com EmailJS
-// Instruções: substitua 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' e 'YOUR_USER_ID' pelos valores do EmailJS.
+// main.js - validação simples do formulário e integração com EmailJS
+// Instruções: confirme no painel EmailJS o `service ID`, `template ID` e a `public key` (user ID).
 
 document.addEventListener('DOMContentLoaded', function () {
-    // EmailJS configuration
-    // Substitua 'YOUR_EMAILJS_USER_ID' pelo seu user ID (public key) do EmailJS
-    // Substitua 'YOUR_TEMPLATE_ID' pelo template ID criado no EmailJS
+    // EmailJS configuration (substitua pelos valores da sua conta, se necessário)
     const EMAILJS_USER_ID = 'AARyxJ9zSu_dUKrkL';
-    const SERVICE_ID = 'service_d1dipsp'; // fornecido
-    const TEMPLATE_ID = 'template_k3fo05l';
+    const SERVICE_ID = 'service_d1dipsp';
+    const TEMPLATE_ID = 'template_fragdiq';
 
-    if (window.emailjs) {
-        if (EMAILJS_USER_ID && EMAILJS_USER_ID !== 'YOUR_EMAILJS_USER_ID') {
-            emailjs.init(EMAILJS_USER_ID);
-        } else {
-            console.warn('EmailJS user ID não configurado — configure EMAILJS_USER_ID em Js/main.js para usar envio via EmailJS.');
-        }
+  try {
+    if (EMAILJS_USER_ID) {
+        emailjs.init(EMAILJS_USER_ID);
+        console.log('EmailJS inicializado com public key.');
+    } else {
+        console.warn('EmailJS user ID não configurado.');
     }
+} catch (err) {
+    console.warn('Erro ao inicializar EmailJS:', err);
+}
 
     const form = document.getElementById('contactForm');
+
+    function showStatus(message, isError) {
+        let status = form.querySelector('.form-status');
+        if (!status) {
+            status = document.createElement('div');
+            status.className = 'form-status';
+            status.style.marginTop = '10px';
+            form.appendChild(status);
+        }
+        status.textContent = message;
+        status.style.color = isError ? '#c00' : '#080';
+    }
+
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -28,40 +42,44 @@ document.addEventListener('DOMContentLoaded', function () {
         const mensagem = document.getElementById('mensagem').value.trim();
 
         if (!nome || !sobrenome || !email || !telefone) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
+            showStatus('Por favor, preencha todos os campos obrigatórios.', true);
             return;
         }
 
-        // Exemplo de template params para EmailJS
-        const templateParams = {
-            nome: nome,
-            sobrenome: sobrenome,
-            email: email,
-            telefone: telefone,
-            mensagem: mensagem
-        };
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        showStatus('Enviando solicitação...', false);
 
-        // Usar EmailJS se disponível e configurado
+        // Se EmailJS estiver disponível e configurado, enviar via sendForm (mapeia inputs pelo atributo name)
         if (window.emailjs && SERVICE_ID && TEMPLATE_ID && TEMPLATE_ID !== 'YOUR_TEMPLATE_ID') {
-            // desabilita botão enquanto envia
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
                 .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    alert('Solicitação enviada com sucesso! Entraremos em contato.');
+                    console.log('EmailJS SUCCESS', response);
+                    showStatus('Solicitação enviada com sucesso! Entraremos em contato.', false);
                     form.reset();
-                    btn.disabled = false;
-                }, function (error) {
-                    console.error('FAILED...', error);
-                    alert('Erro ao enviar via EmailJS. Verifique sua configuração ou tente novamente.');
-                    btn.disabled = false;
+                    submitBtn.disabled = false;
+                })
+                .catch(function (error) {
+                    console.error('EmailJS FAILED', error);
+                    showStatus('Erro ao enviar via EmailJS. Abrindo cliente de e-mail como alternativa...', true);
+                    submitBtn.disabled = false;
+                    // fallback: abrir mailto com os dados preenchidos
+                    const subject = encodeURIComponent('Solicitação de Orçamento - ' + nome + ' ' + sobrenome);
+                    const body = encodeURIComponent(`Nome: ${nome} ${sobrenome}\nEmail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`);
+                    // Dar um pequeno atraso para o usuário ver a mensagem antes de redirecionar
+                    setTimeout(function () {
+                        window.location.href = `mailto:contato@jwautocar.com?subject=${subject}&body=${body}`;
+                    }, 800);
                 });
         } else {
-            // Fallback: abrir mailto com os dados (útil para testar sem API)
+            // EmailJS não disponível/configurado corretamente — usar fallback mailto
+            console.warn('EmailJS não disponível ou não configurado corretamente; usando mailto fallback.');
+            showStatus('EmailJS não configurado. Abrindo cliente de e-mail...', true);
             const subject = encodeURIComponent('Solicitação de Orçamento - ' + nome + ' ' + sobrenome);
             const body = encodeURIComponent(`Nome: ${nome} ${sobrenome}\nEmail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`);
-            window.location.href = `mailto:contato@jwautocar.com?subject=${subject}&body=${body}`;
+            setTimeout(function () {
+                window.location.href = `mailto:lucymaosdefada@gmail.com?subject=${subject}&body=${body}`;
+            }, 400);
         }
     });
 });
